@@ -1,32 +1,54 @@
 import { useState } from 'react'
+import { Suspeito } from '../backend/Suspeito'
+import { Graph, EncontraSuspeitos } from '../backend/Graph'
+import cytoscape from 'cytoscape'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  let sus1 = new Suspeito(1, 'João');
+  let sus2 = new Suspeito(2, 'Cauê');
+  let sus3 = new Suspeito(3, 'Caio');
+  sus1.acusa([2, 3]);
+  sus2.acusa([3]);
+  sus3.acusa([1, 2]);
+
+  let grafo = new Graph();
+  grafo.addNode(sus1);
+  grafo.addNode(sus2);
+  grafo.addNode(sus3);
+  grafo.addEdges(sus1);
+  grafo.addEdges(sus2);
+  grafo.addEdges(sus3);
+
+  let cy = cytoscape({
+    container: document.getElementById('cy'),
+  });
+
+  grafo.graph.nodes.map((node) => {
+    cy.add({
+      group: 'nodes',
+      data: { id: node.id }
+    })
+  });
+
+  let edgeId = 1;
+  grafo.graph.edges.map((edge) => {
+    cy.add({
+      group: 'edges',
+      data: {
+        id: edgeId,
+        source: edge.source,
+        target: edge.target,
+        directed: true
+      }
+    })
+    edgeId += 1;
+  });
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div id="cy"></div>
     </div>
   )
 }

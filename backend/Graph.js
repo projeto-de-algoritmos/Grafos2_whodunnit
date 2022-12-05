@@ -23,8 +23,7 @@ export class Graph {
     addNode(node) {
         this.graph.nodes.push({
             id: node.id,
-            label: node.nome,
-            title: node.nome
+            nome: node.nome,
         });
     }
     // Adição de arestas no grafo
@@ -32,8 +31,8 @@ export class Graph {
     addEdges(baseNode){
         baseNode.acusacoes.map((targetNodeId) => {
             this.graph.edges.push({
-                from: baseNode.id,
-                to: targetNodeId
+                source: baseNode.id,
+                target: targetNodeId
             })
         })
     }
@@ -58,15 +57,15 @@ export function EncontraSuspeitos(grafo, numDeVerdades) {
         const edges = grafo.graph.edges;
         edges.map((edge) => {
             console.log(edge);
-            if (edge.from === node.id){
+            if (edge.source === node.id){
                 return;
             }
-            if (edge.to === node.id){
+            if (edge.target === node.id){
                 verdades += 1;
             }
         });
         possibilidades.push({
-            assassino: node.label,
+            assassino: node.nome,
             verdades: verdades
         });
         verdades = 0;
