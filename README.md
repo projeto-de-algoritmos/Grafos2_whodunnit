@@ -1,7 +1,7 @@
 # Whodunnit - Grafos 2
 
 ## Vídeo de apresentação 📹
-[link para o vídeo](link)
+[link para o vídeo](https://unbbr.sharepoint.com/:v:/s/Gravaodevdeos505/ER5iigefMYdAsBcGYcdG7dkBAqh-p4ffIj6cnkEDQVWN6A?e=Ex6KTA)
 
 ## Dupla 01 👨‍🎓👩‍🎓
 |Matrícula | Aluno |
@@ -10,7 +10,7 @@
 | 18/0017870  |  [Giulia Lobo Barros](https://github.com/Giuulob89) |
 
 ## Sobre 🔍
-O objetivo deste projeto é realizar a demonstração da resolução de x problemas de lógica utilizando teoria de grafos.
+O objetivo deste projeto é realizar a demonstração da resolução de problemas de lógica do estilo Whodunnit utilizando teoria de grafos.
 
 ## Screenshots 📸
 
@@ -28,3 +28,22 @@ Para rodar o projeto basta clonar o repositório
 ```sh
     git clone https://github.com/projeto-de-algoritmos/Grafos2_whodunnit
 ```
+
+Entre para a pasta frontend
+```sh
+   cd frontend
+```
+
+Instale as dependências
+```sh
+   yarn
+```
+
+Rode o projeto
+```sh
+   yarn dev
+```
+
+Ele estará disponível em:
+
+[http://localhost:5173/](http://localhost:5173/)
