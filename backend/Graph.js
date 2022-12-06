@@ -1,23 +1,8 @@
 //Estrutura básica do Grafo para integração com o react-graph-vis
 export class Graph {
     graph = {
-        nodes:[],
-        edges:[]
-    };
-    events = {
-        select: ({nodes, edges}) => {
-            console.log(nodes);
-            console.log(edges);
-        }
-    };
-    options = {
-        layout: {
-            hierarchical: true
-        },
-        edges: {
-            color: "#000000"
-        },
-        height: "500px"
+        nodes: [],
+        edges: []
     };
     // Adição de nós no grafo
     addNode(node) {
@@ -28,7 +13,7 @@ export class Graph {
     }
     // Adição de arestas no grafo
     // A função aceita um nó do tipo Suspeito, e preenche as arestas do grafo
-    addEdges(baseNode){
+    addEdges(baseNode) {
         baseNode.acusacoes.map((targetNodeId) => {
             this.graph.edges.push({
                 source: baseNode.id,
@@ -56,11 +41,10 @@ export function EncontraSuspeitos(grafo, numDeVerdades) {
         // Para cada aresta
         const edges = grafo.graph.edges;
         edges.map((edge) => {
-            console.log(edge);
-            if (edge.source === node.id){
+            if (edge.source === node.id) {
                 return;
             }
-            if (edge.target === node.id){
+            if (edge.target === node.id) {
                 verdades += 1;
             }
         });
@@ -71,7 +55,6 @@ export function EncontraSuspeitos(grafo, numDeVerdades) {
         verdades = 0;
     });
     let solucao = [];
-    console.log(possibilidades);
     possibilidades.map((possibilidade) => {
         if (possibilidade.verdades === numDeVerdades)
             solucao.push(possibilidade);

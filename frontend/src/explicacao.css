@@ -1,0 +1,29 @@
+.azul {
+    color: #6b7fd7;
+}
+
+.vermelho {
+    color: #ee2e31;
+}
+
+.amarelo {
+    color: #f5d547;
+}
+
+.titulo-explicacao {
+    font-family: Anton, sans-serif;
+    margin: auto;
+    font-size: 2em;
+}
+
+.grafo {
+    width: 25vw;
+}
+
+.explicacao-problema {
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+    line-height: normal;
+    font-size: 0.6rem;
+    font-weight: 100;
+}
